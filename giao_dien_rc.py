@@ -157,9 +157,9 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Đồ án tin học:</span> Nhận dạng số loại thuốc trong khay đếm.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Giáo viên hướng dẫn:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Sinh viên thực hiện:</span> <span style=\" font-style:italic;\">Lê Công Minh </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:italic;\">                                 Lê Trung Lượm</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Giáo viên hướng dẫn:</span> <span style=\" font-style:italic;\"> Đặng Thành Tín </span> </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Sinh viên thực hiện:</span> <span style=\" font-style:italic;\">Nguyễn Hồng Chung </span></p>\n"
+))
         self.label_2.setText(_translate("MainWindow", "Show picture drug"))
         self.label.setText(_translate("MainWindow", "ShowCamera"))
         self.label_5.setText(_translate("MainWindow", "Link open camera"))
