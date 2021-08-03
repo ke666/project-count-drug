@@ -4,7 +4,10 @@ import cv2
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from giao_dien import *
-vidcap = cv2.VideoCapture(0)
+
+#get video/imagin from camera
+vidcap = cv2.VideoCapture('video.mp4')
+#vidcap = cv2.VideoCapture(0)
 #vidcap = cv2.VideoCapture('http://192.168.1.103:8080/video')
 success, image =  vidcap.read()
 count = 0

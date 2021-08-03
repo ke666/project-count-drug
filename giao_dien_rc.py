@@ -83,9 +83,11 @@ class Ui_MainWindow(object):
         self.pushButton_4.setObjectName("pushButton_4")
         self.horizontalLayout.addWidget(self.pushButton_4)
         self.gridLayout.addLayout(self.horizontalLayout, 3, 0, 1, 2)
+
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser.setObjectName("textBrowser")
         self.gridLayout.addWidget(self.textBrowser, 4, 0, 1, 2)
+        
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setEnabled(True)
         self.label_2.setMinimumSize(QtCore.QSize(640, 480))
@@ -94,6 +96,7 @@ class Ui_MainWindow(object):
         self.label_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 5, 0, 1, 2)
+
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setEnabled(True)
         self.label.setMinimumSize(QtCore.QSize(640, 480))
@@ -105,10 +108,12 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.label, 5, 2, 1, 3)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setMinimumSize(QtCore.QSize(200, 0))
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_2.addWidget(self.label_5)
+
         self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_3.setMinimumSize(QtCore.QSize(400, 0))
         self.lineEdit_3.setObjectName("lineEdit_3")
@@ -148,7 +153,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Thuốc vừa nhận dạng:"))
         self.label_7.setText(_translate("MainWindow", "Đợt kế tiếp:"))
         self.listWidget.setSortingEnabled(False)
-        self.pushButton.setText(_translate("MainWindow", "Open Camera"))
+        self.pushButton.setText(_translate("MainWindow", "Open video"))
         self.pushButton_3.setText(_translate("MainWindow", "Save"))
         self.pushButton_2.setText(_translate("MainWindow", "Run"))
         self.pushButton_4.setText(_translate("MainWindow", "Reset"))
@@ -162,8 +167,8 @@ class Ui_MainWindow(object):
 ))
         self.label_2.setText(_translate("MainWindow", "Show picture drug"))
         self.label.setText(_translate("MainWindow", "ShowCamera"))
-        self.label_5.setText(_translate("MainWindow", "Link open camera"))
-        self.label_4.setText(_translate("MainWindow", "     Number of drugs:"))
+        self.label_5.setText(_translate("MainWindow", "Link open video"))
+        self.label_4.setText(_translate("MainWindow", "Number of drugs:"))
 
 
 

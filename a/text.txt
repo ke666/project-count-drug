@@ -1,0 +1,3 @@
+cd E:\drive\DAIHOC\nam4\project label drug\env\Scripts
+activate
+cd E:\drive\DAIHOC\nam4\count drug\a

@@ -59,6 +59,7 @@ class Do_an(QMainWindow):
         self.image = list[Do_an.count]
             # self.image = cv2.imread(k)
         self.displayImage_3()
+
     def displayImage_2(self):
         qformat = QImage.Format_RBG32qformat = QImage.Format_Indexed8
         if len(self.image2.shape) == 3:
@@ -99,12 +100,18 @@ class Do_an(QMainWindow):
         self.ui.label.setPixmap(QPixmap.fromImage(qImg))
 
         ####start/stop timer
-
+    def openClicked(self):
+        filename = QFileDialog.getOpenFileName()
+        self.path = filename[0]
+        self.input_link.setText(self.path)
+        return filename[0]
+        
     def controlTimer(self):
         # if timer is stopped
         if not self.timer.isActive():
             # create video capture
-            self.cap = cv2.VideoCapture(0)
+            #self.cap = cv2.VideoCapture(0)
+            self.cap = cv2.VideoCapture('video.mp4')  #link to current video
             # start timer
             self.timer.start(20)
             # update control_bt text

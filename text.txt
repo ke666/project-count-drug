@@ -1,0 +1,9 @@
+cd env/Scripts && activate
+cd E:\drive\DAIHOC\nam4\project label drug
+
+
+
+cd E:\drive\DAIHOC\nam4\K2016-PFIEV  - Pill Counting\doan
+
+
+videowidget.py
