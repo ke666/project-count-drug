@@ -8,7 +8,6 @@
 ########## File giao_dien_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -111,14 +110,25 @@ class Ui_MainWindow(object):
         
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setMinimumSize(QtCore.QSize(200, 0))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(14)
+        self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_2.addWidget(self.label_5)
+        
+        self.input_link = QtWidgets.QLineEdit(self.centralwidget)
+        self.input_link.setMinimumSize(QtCore.QSize(400, 0))
+        # self.input_link.setGeometry(QtCore.QRect(200, 510, 350, 31))
+        self.input_link.setObjectName("input_link")
+        self.horizontalLayout_2.addWidget(self.input_link)
 
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_3.setMinimumSize(QtCore.QSize(400, 0))
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.horizontalLayout_2.addWidget(self.lineEdit_3)
+        # self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
+        # self.lineEdit_3.setMinimumSize(QtCore.QSize(400, 0))
+        # self.lineEdit_3.setObjectName("lineEdit_3")
+        # self.horizontalLayout_2.addWidget(self.lineEdit_3)
         self.gridLayout.addLayout(self.horizontalLayout_2, 6, 0, 1, 2)
+
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setMinimumSize(QtCore.QSize(200, 35))
         self.label_4.setMaximumSize(QtCore.QSize(300, 40))
@@ -127,6 +137,7 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
+
         self.gridLayout.addWidget(self.label_4, 6, 2, 1, 2)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_2.setMinimumSize(QtCore.QSize(200, 30))
@@ -156,19 +167,19 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Open video"))
         self.pushButton_3.setText(_translate("MainWindow", "Save"))
         self.pushButton_2.setText(_translate("MainWindow", "Run"))
-        self.pushButton_4.setText(_translate("MainWindow", "Reset"))
+        self.pushButton_4.setText(_translate("MainWindow", "Play"))
         self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Đồ án tin học:</span> Nhận dạng số loại thuốc trong khay đếm.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Giáo viên hướng dẫn:</span> <span style=\" font-style:italic;\"> Đặng Thành Tín </span> </p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Sinh viên thực hiện:</span> <span style=\" font-style:italic;\">Nguyễn Hồng Chung </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Giáo viên hướng dẫn:</span> <span style=\" font-style:italic;\"> PGS. TS. Đặng Thành Tín </span> </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Sinh viên thực hiện:</span> <span style=\" font-style:italic;\">Nguyễn Hải Khiêm </span></p>\n"
 ))
         self.label_2.setText(_translate("MainWindow", "Show picture drug"))
-        self.label.setText(_translate("MainWindow", "ShowCamera"))
+        self.label.setText(_translate("MainWindow", "Show video"))
         self.label_5.setText(_translate("MainWindow", "Link open video"))
-        self.label_4.setText(_translate("MainWindow", "Number of drugs:"))
+        self.label_4.setText(_translate("MainWindow", "Number of type drugs:"))
 
 
 

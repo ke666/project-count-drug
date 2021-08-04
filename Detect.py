@@ -2,6 +2,7 @@ from imutils import contours
 import numpy as np
 import imutils
 import cv2
+        
 def Crush(image) :
     img = cv2.imread(image)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

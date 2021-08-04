@@ -5,5 +5,5 @@ cd E:\drive\DAIHOC\nam4\project label drug
 
 cd E:\drive\DAIHOC\nam4\K2016-PFIEV  - Pill Counting\doan
 
-
+cd E:\drive\DAIHOC\nam4\label drug
 videowidget.py

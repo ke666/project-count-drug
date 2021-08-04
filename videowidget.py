@@ -79,7 +79,7 @@ class VideoPlayer(QWidget):
         controlLayout.setContentsMargins(0, 0, 0, 0)
         controlLayout.addWidget(openButton)
         controlLayout.addWidget(self.playButton)
-        controlLayout.addWidget(self.positionSlider)
+        #controlLayout.addWidget(self.positionSlider)
 
         layout = QVBoxLayout()
         layout.addWidget(videoWidget)
