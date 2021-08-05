@@ -180,6 +180,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Show video"))
         self.label_5.setText(_translate("MainWindow", "Link open video"))
         self.label_4.setText(_translate("MainWindow", "Number of type drugs:"))
+    
 
 
 
