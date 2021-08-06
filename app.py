@@ -56,7 +56,7 @@ class Do_an(QMainWindow):
     def start(self) :
         Do_an.count = 0 
         inputvideo = cv2.VideoCapture(self.path)
-        for i in range(100):                
+        for i in range(10):                
             success, image = inputvideo.read()
             # imgg,L,tuplee = De.Crush("frame.jpg")
         imgg,L,tuplee = De.Crush(image)
@@ -69,10 +69,11 @@ class Do_an(QMainWindow):
         self.displayImage_2()
         self.ui.lineEdit_2.setText(str(len(Do_an.L)))
     
-    def loadImage(self,list):
+    def loadImage(self,list):        
         self.image = list[Do_an.count]
-            # self.image = cv2.imread(k)
         self.displayImage_3()
+            # self.image = cv2.imread(k)
+        
 
     def additem(self):        
         if not self.ui.lineEdit.text()=="":
