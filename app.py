@@ -39,18 +39,38 @@ class Do_an(QMainWindow):
         # set timer timeout callback function
         self.timer.timeout.connect(self.viewCam)
         self.ui.pushButton_2.clicked.connect(self.start)
-        self.ui.lineEdit.returnPressed.connect(self.additem)
-        # self.ui.lineEdit.returnPressed.connect(self.Savee)
-        self.ui.lineEdit.returnPressed.connect(self.puttext)
+        self.ui.lineEdit.returnPressed.connect(self.labelFieldEntered)
         self.ui.pushButton.clicked.connect(self.openClicked)
-        self.ui.pushButton_4.clicked.connect(self.controlTimer)      
-        self.ui.pushButton_3.clicked.connect(self.Savee)
+        self.ui.pushButton_4.clicked.connect(self.controlTimer)
+
+    def labelFieldEntered(self):
+        if self.ui.lineEdit.text()=="": return
+        if Do_an.count >= len(Do_an.L): return
+
+        self.stt = self.ui.lineEdit.text()
+        cv2.imwrite("images/"+str(self.stt)+".png",self.image)
+
+        self.ui.listWidget.addItem(str(Do_an.count+1) + '.' + self.ui.lineEdit.text())
+        self.puttext()
+
+        Do_an.count += 1
+        if Do_an.count < len(Do_an.L):
+            self.image = Do_an.L[Do_an.count]
+            self.displayImage_3()
+            self.ui.lineEdit.setText("")
+        else:
+            self.ui.lineEdit.setEnabled(False)
+            self.ui.label_3.setPixmap(QPixmap())
+
 
     def openClicked(self):
         filename = QFileDialog.getOpenFileName()
         self.path = filename[0]
         self.ui.input_link.setText(self.path)                        
-        self.inputvideo = cv2.VideoCapture(filename[0])        
+        self.inputvideo = cv2.VideoCapture(filename[0])
+        self.ui.pushButton_4.setEnabled(True)  
+        self.ui.pushButton_3.setEnabled(True) 
+        self.ui.pushButton_2.setEnabled(True)     
         return filename[0]
     
     def start(self) :
@@ -68,28 +88,11 @@ class Do_an(QMainWindow):
         self.image2 = Do_an.im
         self.displayImage_2()
         self.ui.lineEdit_2.setText(str(len(Do_an.L)))
-    
-    def loadImage(self,list):        
-        self.image = list[Do_an.count]
-        self.displayImage_3()
-            # self.image = cv2.imread(k)
-        
-
-    def additem(self):        
-        if not self.ui.lineEdit.text()=="":
-            # Do_an.count += 1
-            self.ui.listWidget.addItem(str(Do_an.count +1 ) + '.' + self.ui.lineEdit.text())
-            self.stt = self.ui.lineEdit.text()
-            self.ui.lineEdit.setText("")
-            self.loadImage(Do_an.L)
-            Do_an.count += 1
 
     def puttext(self):
         (x, y, w, h) = cv2.boundingRect(Do_an.cntss[Do_an.count])
-        # xm = x 
-        # ym = y 
-        xm = x #+ int (w/4)
-        ym = y #+ int (h)
+        xm = x 
+        ym = y         
         cv2.putText(self.image2, str(self.stt), (xm, ym), cv2.FONT_HERSHEY_SIMPLEX, 1, (200, 255, 155), 2, cv2.LINE_AA)
         self.displayImage_2()
 
@@ -119,8 +122,8 @@ class Do_an(QMainWindow):
         self.ui.label_3.setPixmap(QPixmap.fromImage(img))
         self.ui.label_3.setAlignment(QtCore.Qt.AlignCenter)
         
-    def Savee(self):
-        cv2.imwrite("images/"+str(self.stt)+".png",self.image) 
+    # def Savee(self):
+    #     cv2.imwrite("images/"+str(self.stt)+".png",self.image) 
 
     def viewCam(self):
         # read image in BGR format
