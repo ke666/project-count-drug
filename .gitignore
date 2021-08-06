@@ -1,8 +1,6 @@
-paper_group11-5_7_2019.doc
-detect (2).py
-env
-frame20.jpg
-lenh.txt
-build
-text.txt
+# created by virtualenv automatically
 a
+build 
+env
+app.exe
+videowidget.py

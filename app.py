@@ -1,45 +1,161 @@
-####file main
+# from _typeshed import Self
+from imutils import contours
+import numpy as np
+import imutils
 import Detect as De
 import cv2
-from PyQt5.QtGui import *
+from os import name
 from PyQt5.QtWidgets import *
-from giao_dien import *
-# from PyQt5.QtWidgets import *
-# from PyQt5.QtGui import *
-# from PyQt5.QtCore import QTimer,QByteArray, QDir
-# from PyQt5.QtCore import QDir, Qt, QUrl
-# from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
-# from PyQt5.QtMultimediaWidgets import QVideoWidget
-# from PyQt5.QtWidgets import (QApplication, QFileDialog, QHBoxLayout, QLabel,
-#         QPushButton, QSizePolicy, QSlider, QStyle, QVBoxLayout, QWidget)
+from PyQt5.QtGui import *
+from PyQt5.QtCore import QTimer,QByteArray, QDir
+from PyQt5.QtCore import QDir, Qt, QUrl
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
+from PyQt5.QtMultimediaWidgets import QVideoWidget
+from PyQt5.QtWidgets import (QApplication, QFileDialog, QHBoxLayout, QLabel,
+        QPushButton, QSizePolicy, QSlider, QStyle, QVBoxLayout, QWidget)
+import  sys
+from giao_dien_rc import  *
+# import Detect as De
+# L = De.Crush('pic1.jpg')
 
-input = cv2.VideoCapture()
-for i in range(10):                
-    success, image = input.read()
-    cv2.imwrite("frame.jpg" ,image)
-    print('read a new frame:', success)
+class Do_an(QMainWindow):
+    L = []
+    cntss = ()
+    im = np.array([])
+    def Getlist(self,im,listt,tup):
+        Do_an.L = listt
+        Do_an.im = im
+        Do_an.cntss = tup
+    # class constructor
+    def __init__(self, parent=None):
+        # call QWidget constructor
+        super(Do_an, self).__init__(parent=parent)
+        self.ui = Ui_MainWindow() #lay từ file giao_dien_rc
+        self.ui.setupUi(self)
+        self.image = QImage()
+        self.image2 = QImage()
+        # create a timer
+        self.timer = QTimer()
+        # set timer timeout callback function
+        self.timer.timeout.connect(self.viewCam)
+        self.ui.pushButton_2.clicked.connect(self.start)
+        self.ui.lineEdit.returnPressed.connect(self.additem)
+        # self.ui.lineEdit.returnPressed.connect(self.Savee)
+        self.ui.lineEdit.returnPressed.connect(self.puttext)
+        self.ui.pushButton.clicked.connect(self.openClicked)
+        self.ui.pushButton_4.clicked.connect(self.controlTimer)      
+        self.ui.pushButton_3.clicked.connect(self.Savee)
 
-# vidcap = cv2.VideoCapture("video1.mp4")
-# #vidcap = cv2.VideoCapture('http://192.168.1.103:8080/video')
-# success, image =  vidcap.read()
-# count = 0
-# success = True
-# while success:
+    def openClicked(self):
+        filename = QFileDialog.getOpenFileName()
+        self.path = filename[0]
+        self.ui.input_link.setText(self.path)                        
+        self.inputvideo = cv2.VideoCapture(filename[0])        
+        return filename[0]
+    
+    def start(self) :
+        Do_an.count = 0 
+        inputvideo = cv2.VideoCapture(self.path)
+        for i in range(100):                
+            success, image = inputvideo.read()
+            # imgg,L,tuplee = De.Crush("frame.jpg")
+        imgg,L,tuplee = De.Crush(image)
+        Do_an.Getlist(Do_an,imgg,L,tuplee)
 
-#     # cv2.imwrite("frame%d.jpg" % count, image)
-#     cv2.imwrite("frame.jpg" ,image)
-#     success, image = vidcap.read()
-#     print('read a new frame:', success)
-#     count += 1
-#     if count > 10:
-#         break 
+        inputvideo.release()               
+        self.image = Do_an.L[0]
+        self.displayImage_3()
+        self.image2 = Do_an.im
+        self.displayImage_2()
+        self.ui.lineEdit_2.setText(str(len(Do_an.L)))
+    
+    def loadImage(self,list):
+        self.image = list[Do_an.count]
+            # self.image = cv2.imread(k)
+        self.displayImage_3()
 
-imgg,L,tuplee = De.Crush("frame.jpg")
-Do_an.Getlist(Do_an,imgg,L,tuplee)
-app = QApplication(sys.argv)
+    def additem(self):        
+        if not self.ui.lineEdit.text()=="":
+            # Do_an.count += 1
+            self.ui.listWidget.addItem(str(Do_an.count +1 ) + '.' + self.ui.lineEdit.text())
+            self.stt = self.ui.lineEdit.text()
+            self.ui.lineEdit.setText("")
+            self.loadImage(Do_an.L)
+            Do_an.count += 1
 
-# create and show mainWindow
-doan = Do_an()
-doan.show()
+    def puttext(self):
+        (x, y, w, h) = cv2.boundingRect(Do_an.cntss[Do_an.count])
+        # xm = x 
+        # ym = y 
+        xm = x #+ int (w/4)
+        ym = y #+ int (h)
+        cv2.putText(self.image2, str(self.stt), (xm, ym), cv2.FONT_HERSHEY_SIMPLEX, 1, (200, 255, 155), 2, cv2.LINE_AA)
+        self.displayImage_2()
 
-sys.exit(app.exec_())
+    
+
+    def displayImage_2(self):
+        qformat = QImage.Format_RBG32qformat = QImage.Format_Indexed8
+        if len(self.image2.shape) == 3:
+            if self.image2.shape[2] == 4:
+                qformat = QImage.Format_RGBA8888
+            else:
+                qformat = QImage.Format_RGB888
+        img = QtGui.QImage(self.image2.data, self.image2.shape[1], self.image2.shape[0], self.image2.strides[0], qformat)
+        img = img.rgbSwapped()
+        self.ui.label_2.setPixmap(QPixmap.fromImage(img))
+        self.ui.label_2.setAlignment(QtCore.Qt.AlignCenter)
+
+    def displayImage_3(self):
+        qformat = QImage.Format_RBG32qformat = QImage.Format_Indexed8
+        if len(self.image.shape) == 3:
+            if self.image.shape[2] == 4:
+                qformat = QImage.Format_RGBA8888
+            else:
+                qformat = QImage.Format_RGB888
+        img = QtGui.QImage(self.image.data, self.image.shape[1], self.image.shape[0], self.image.strides[0], qformat)
+        img = img.rgbSwapped()
+        self.ui.label_3.setPixmap(QPixmap.fromImage(img))
+        self.ui.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        
+    def Savee(self):
+        cv2.imwrite("images/"+str(self.stt)+".png",self.image) 
+
+    def viewCam(self):
+        # read image in BGR format
+        
+        # convert image to RGB format        
+        ret, image =  self.inputvideo.read() 
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)        
+        # get image infos
+        height, width, channel = image.shape
+        step = channel * width
+        # create QImage from image
+        qImg = QImage(image.data, width, height, step, QImage.Format_RGB888)
+        # show image in img_label
+        self.ui.label.setPixmap(QPixmap.fromImage(qImg))
+        ####start/stop timer    
+    
+    def controlTimer(self):
+        # if timer is stopped
+        if not self.timer.isActive():
+            self.inputvideo = cv2.VideoCapture(self.path)  
+            self.timer.start(20) # start timer
+            # update control_bt text
+            self.ui.pushButton_4.setText("Dừng")
+            # if timer is started
+        else:            
+            # stop timer
+            self.timer.stop()
+            # release video capture
+            self.inputvideo.release()
+            # update control_bt text
+            self.ui.pushButton_4.setText("Chạy")
+            
+if __name__ == '__main__':
+    import sys    
+    app = QApplication(sys.argv)
+    doan = Do_an()
+    doan.show()
+
+    sys.exit(app.exec_())     

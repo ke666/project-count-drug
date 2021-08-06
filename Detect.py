@@ -3,8 +3,8 @@ import numpy as np
 import imutils
 import cv2
         
-def Crush(image) :
-    img = cv2.imread(image)
+def Crush(img) :
+    # img = cv2.imread(image)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (9, 9), 0)
     edged = cv2.Canny(gray, 50, 100)
