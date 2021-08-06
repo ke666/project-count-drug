@@ -81,13 +81,13 @@ class Do_an(QMainWindow):
             # imgg,L,tuplee = De.Crush("frame.jpg")
         imgg,L,tuplee = De.Crush(image)
         Do_an.Getlist(Do_an,imgg,L,tuplee)
-
         inputvideo.release()               
         self.image = Do_an.L[0]
         self.displayImage_3()
         self.image2 = Do_an.im
         self.displayImage_2()
         self.ui.lineEdit_2.setText(str(len(Do_an.L)))
+        self.ui.lineEdit.setEnabled(True)
 
     def puttext(self):
         (x, y, w, h) = cv2.boundingRect(Do_an.cntss[Do_an.count])
