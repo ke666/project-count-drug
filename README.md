@@ -2,7 +2,7 @@
 
 Giao diện: 
 
-<p align="center"> <img src="im/giaodien.png" width="500"> </p>
+<p align="center"> <img src="im/giaodien.png" width="800"> </p>
 
 Kết quả:
 
