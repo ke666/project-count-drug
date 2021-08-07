@@ -6,5 +6,5 @@ Giao diện:
 
 Kết quả:
 
-![kq](drugs are labeled.png)
+![Result](drugs are labeled.png)
 
