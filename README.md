@@ -2,9 +2,9 @@
 
 Giao diện: 
 
-![Result](giaodien.png)
+<p align="center"> <img src="im/giaodien.png" width="250"> </p>
 
 Kết quả:
 
-![Result](drugs are labeled.png)
+<p align="center"> <img src="im/drugs are labeled.png" width="250"> </p>
 
